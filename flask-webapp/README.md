@@ -23,6 +23,18 @@ This project is a Flask-based web application that predicts diamond prices based
 
 
 ## Installation
+
+Clone this repo:
+```
+https://github.com/Metaphysicist1/ml-zoomcamp.git
+```
+
+Or pull docker Image
+```
+docker pull metaphysicist/diamond-price-predictor:latest
+```
+
+
 To set up the project, ensure you have Docker installed. Then, build and run the Docker container:
 ```
 docker build -t xgboost-predictor .
