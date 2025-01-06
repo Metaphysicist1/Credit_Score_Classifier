@@ -1,18 +1,23 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
 from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
 from sklearn.feature_extraction import DictVectorizer
 import xgboost as xgb 
-from pydantic import BaseModel
 import joblib
-import numpy as np
 import logging
+from sqlalchemy.orm import Session
+from database.db import get_db
+from database.crud import create_prediction
+from database.modell import PredictionResult
+from pydantic import BaseModel
+from typing import List
+
+
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Load the trained Decision Tree model
+# Load the trained XGBoost model
 try:
     model = joblib.load("models/xgboost_classifier.pkl")
     logger.info("Model loaded successfully.")
@@ -24,7 +29,7 @@ app = FastAPI()
 
 # Define the input data model
 class InputData(BaseModel):
-    features: list
+    features: List[float]  # Adjust the type based on your input features
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
@@ -55,7 +60,7 @@ async def read_root():
                 </select>
 
                 <label for="time">Time:</label>
-                <input type="number" id="time" name="time" required>
+                <input type="number" id="timeINFO:     127.0.0.1:47146 - "POST /predict HTTP/1.1" 422 Unprocessable Entity" name="time" required>
 
                 <label for="age">Age:</label>
                 <input type="number" id="age" name="age" required>
@@ -66,7 +71,7 @@ async def read_root():
                     <option value="married">Married</option>
                     <option value="separated">Separated</option>
                     <option value="divorced">Divorced</option>
-                </select>
+                </select>INFO:     127.0.0.1:47146 - "POST /predict HTTP/1.1" 422 Unprocessable Entity
 
                 <label for="records">Records:</label>
                 <select id="records" name="records" required>
@@ -121,7 +126,7 @@ async def read_root():
                     });
 
                     const result = await response.json();
-                    document.getElementById('result').innerText = 'Based on the prediction model, the probability of being classified as high risk: ' + result.prediction;
+                    document.getElementById('result').innerText = 'Prediction: ' + result.prediction;
                 };
             </script>
         </body>
@@ -131,6 +136,7 @@ async def read_root():
 
 @app.post("/predict")
 def predict(data: InputData):
+    logger.info("Start number dict")
     try:
         logger.info("Start number dict")
         input_data = {
@@ -158,6 +164,12 @@ def predict(data: InputData):
         # Make prediction
         prediction = model.predict(features)
         logger.info(f"Prediction made successfully: {float(prediction[0])}")
+
+
+        # # Save the prediction result to the database
+        # prediction_data = {**input_data, 'prediction': float(prediction[0])}
+        # create_prediction(db, prediction_data)
+
         return {"prediction": float(prediction[0])}
 
     except Exception as e:
