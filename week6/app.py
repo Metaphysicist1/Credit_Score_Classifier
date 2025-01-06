@@ -15,7 +15,12 @@ from database.modell import PredictionResult
 
 
 # Set up logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    filename='logs/app.log',  # Specify the log file name
+    level=logging.DEBUG,  # Set the logging level
+    format='%(asctime)s - %(levelname)s - %(message)s'  # Set the log message format
+)
+
 logger = logging.getLogger(__name__)
 
 # Load the trained Decision Tree model
@@ -162,13 +167,13 @@ def predict(data: InputData,db: Session = Depends(get_db)):
         features = xgb.DMatrix(processed_data)
         # Make prediction
         prediction = model.predict(features)
-        logger.info(f"Prediction made successfully: {float(prediction[0])} \n")
+        logger.info(f"Prediction made successfully: {float(prediction[0])}")
         
         # Save the prediction result to the database
         prediction_data = {**input_data, 'prediction': float(prediction[0])}
         create_prediction(db, prediction_data)
-        logger.info(f"Prediction saved in Database Succesfully\n")
-        
+        logger.info(f"Prediction saved in Database Succesfully")
+
         return {"prediction": float(prediction[0])}
 
     except Exception as e:
