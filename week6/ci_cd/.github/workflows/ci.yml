@@ -8,6 +8,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+defaults:
+ run:
+  working-directory: ./week6
+
 # A workflow run is made up of one or more jobs
 jobs:
   # This is our first job, we'll call it "hello-world"
@@ -28,4 +32,3 @@ jobs:
       - name: Show timestamp
         run: date
 
-        
