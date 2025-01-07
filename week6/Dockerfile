@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the FastAPI application and model file into the container
 COPY app.py .
-COPY model.pkl .
+COPY models/xgboost_classifier.pkl .
 
 # Expose the port that the app runs on
 EXPOSE 8000
