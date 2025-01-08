@@ -9,12 +9,10 @@ def create_prediction(
     prediction: float, 
     probability: float, 
     model_version: str
-) -> models.Prediction:
+):
     db_prediction = models.Prediction(
         prediction=prediction,
         probability=probability,
-        model_version=model_version,
-        created_at=datetime.utcnow()
     )
     db.add(db_prediction)
     db.commit()

@@ -21,4 +21,5 @@ class Prediction(Base):
     debt = Column(Float)
     amount = Column(Float)
     price = Column(Float)
-    prediction = Column(Float)
+    probability = Column(Float)  
+    prediction = Column(Float)                                                      

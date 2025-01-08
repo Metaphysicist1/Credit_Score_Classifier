@@ -1,8 +1,8 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Union
 
 class PredictionInput(BaseModel):
-    features: List[float]
+    features: List
 
 class PredictionOutput(BaseModel):
     prediction: float

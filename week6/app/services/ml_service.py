@@ -29,21 +29,22 @@ class MLService:
     def predict(self, data: InputData) -> Tuple[float, float]:
         try:
             
-            
+            print("\n\n\n",data,"\n\n\n\n")
+                  
             input_data = {
-                'seniority': int(data.features[0]),  # Convert to int
-                'home': data.features[1],              # Categorical
-                'time': int(data.features[2]),        # Convert to int
-                'age': int(data.features[3]),         # Convert to int
-                'marital': data.features[4],           # Categorical
-                'records': data.features[5],           # Categorical
-                'job': data.features[6],               # Categorical
-                'expenses': float(data.features[7]),   # Convert to float
-                'income': float(data.features[8]),      # Convert to float
-                'assets': float(data.features[9]),      # Convert to float
-                'debt': float(data.features[10]),       # Convert to float
-                'amount': float(data.features[11]),     # Convert to float
-                'price': float(data.features[12]),      # Convert to float
+                'seniority': int(data[0]),  # Convert to int
+                'home': data[1],              # Categorical
+                'time': int(data[2]),        # Convert to int
+                'age': int(data[3]),         # Convert to int
+                'marital': data[4],           # Categorical
+                'records': data[5],           # Categorical
+                'job': data[6],               # Categorical
+                'expenses': float(data[7]),   # Convert to float
+                'income': float(data[8]),      # Convert to float
+                'assets': float(data[9]),      # Convert to float
+                'debt': float(data[10]),       # Convert to float
+                'amount': float(data[11]),     # Convert to float
+                'price': float(data[12]),      # Convert to float
             }
 
             dv = DictVectorizer(sparse=False)
@@ -52,8 +53,10 @@ class MLService:
             processed_data = dv.fit_transform([input_data])
             features = xgb.DMatrix(processed_data)
 
-            prediction = self.model.predict(features)
-            probability = self.model.predict_proba(features).max()
+            raw_pred = self.model.predict(features)[0]
+
+            probability = 1 / (1 + np.exp(-raw_pred))
+            prediction = 1 if probability >= 0.5 else 0
             
             return float(prediction), float(probability)
         except Exception as e:
