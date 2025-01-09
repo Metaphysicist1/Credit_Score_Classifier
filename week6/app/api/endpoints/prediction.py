@@ -148,9 +148,9 @@ def create_prediction(data: schemas.PredictionInput, db: Session = Depends(get_d
         # Save to database
         db_prediction = crud.create_prediction(
             db=db,
+            features=data.features,
             prediction=prediction,
             probability=probability,
-            model_version=ml_service.get_model_version()
         )
         
         logger.info(f"Successful prediction created with id: {db_prediction.id}")

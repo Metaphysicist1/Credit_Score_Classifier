@@ -55,10 +55,10 @@ class MLService:
 
             raw_pred = self.model.predict(features)[0]
 
-            probability = 1 / (1 + np.exp(-raw_pred))
+            probability = (1 / (1 + np.exp(-raw_pred)))
             prediction = 1 if probability >= 0.5 else 0
             
-            return float(prediction), float(probability)
+            return float(prediction), round(float(probability),3)
         except Exception as e:
             logger.error(f"Prediction error: {str(e)}")
             raise RuntimeError("Prediction failed")
