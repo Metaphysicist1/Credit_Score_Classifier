@@ -1,7 +1,10 @@
 ### Week6
 
 
-#####
+##### Run project from Week6 directory
+```
+uvicorn app.api.endpoints.prediction:router
+```
 1. **Tree-based Models**
    - Implementation of XGBoost
    - Model training and evaluation
@@ -31,3 +34,76 @@
    - Code quality checks
 
 The project demonstrates a production-ready ML system with automated testing, containerized deployment, and scalable database operations.
+
+## Project Setup and Running Instructions
+
+### Prerequisites
+
+1. **Python**: Ensure you have Python 3.x installed. You can download it from [python.org](https://www.python.org/downloads/).
+
+2. **Virtual Environment**: It's recommended to use a virtual environment to manage dependencies. You can create one using `venv` or `virtualenv`.
+
+3. **Docker** (Optional): If your project uses Docker, ensure Docker is installed and running on your machine. You can download it from [docker.com](https://www.docker.com/products/docker-desktop).
+
+### Setup Instructions
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/yourusername/yourproject.git
+   cd yourproject
+   ```
+
+2. **Create and Activate a Virtual Environment**
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
+
+3. **Install Dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Running the Project
+
+1. **Run the Application**
+
+   If using FastAPI with Uvicorn, you can start the server with:
+
+   ```bash
+   uvicorn app.api.endpoints.prediction:router --reload
+   ```
+
+   This will start the server on `http://127.0.0.1:8000`.
+
+2. **Access the API**
+
+   Open your browser or use a tool like `curl` or Postman to interact with the API at `http://127.0.0.1:8000`.
+
+### Docker Instructions (Optional)
+
+1. **Build the Docker Image**
+
+   ```bash
+   docker build -t yourproject .
+   ```
+
+2. **Run the Docker Container**
+
+   ```bash
+   docker run -p 8000:8000 yourproject
+   ```
+
+### Additional Information
+
+- **Database Setup**: If your project uses a database, ensure it is set up and running. Update the database connection settings in your configuration files as needed.
+- **Environment Variables**: Set any necessary environment variables, such as API keys or database URLs, before running the application.
+
+### Troubleshooting
+
+- If you encounter issues, check the logs for error messages.
+- Ensure all dependencies are installed and up-to-date.
+- Verify that your virtual environment is activated when running commands.
