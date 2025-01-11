@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from api.endpoints import prediction
-from core.config import settings
-from core.logging import setup_logging
+from app.api.endpoints import prediction
+from app.core.config import settings
+from app.core.logging import setup_logging
 from database.models import Base
 from database.session import engine
 
