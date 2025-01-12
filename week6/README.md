@@ -16,7 +16,7 @@
    - Data persistence for ML models
    - Query optimization
 
-4. **Containerization with Docker [IN Progress]**
+4. **Containerization with Docker**
    - Dockerfile creation
    - Container orchestration
    - Multi-container applications with docker-compose
@@ -41,6 +41,18 @@ The project demonstrates a production-ready ML system with automated testing, co
 3. **Docker** (Optional): If your project uses Docker, ensure Docker is installed and running on your machine. You can download it from [docker.com](https://www.docker.com/products/docker-desktop).
 
 ### Setup Instructions
+
+##### Build project using Docker container 
+
+   For pulling use this command
+   ```bash
+   docker pull https://hub.docker.com/repository/docker/metaphysicist/credit-score-classifier/general
+   ```
+   For running use this command
+   ```bash
+   docker run -it -p 8000:8000 metaphysicist/credit-score-classifier
+   ```
+##### Build project using Git locally 
 
 1. **Clone the Repository**
 
