@@ -1,10 +1,5 @@
 ### Week6
 
-
-##### Run project from Week6 directory
-```
-uvicorn app.api.endpoints.prediction:router
-```
 1. **Tree-based Models**
    - Implementation of XGBoost
    - Model training and evaluation
