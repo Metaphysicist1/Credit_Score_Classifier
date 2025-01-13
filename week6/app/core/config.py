@@ -9,7 +9,12 @@ class Settings(BaseSettings):
     
     # Database configs
     DATABASE_URL: str
-    
+    POSTGRES_USER: str
+    POSTGRES_PASSWORD: str
+    POSTGRES_DB: str
+    POSTGRES_HOST: str 
+    POSTGRES_PORT: int 
+
     # ML Model configs
     MODEL_PATH: str = "app/models/ml/xgboost_classifier.pkl"
     
@@ -19,5 +24,8 @@ class Settings(BaseSettings):
     
     class Config:
         env_file = ".env"
+        extra = "allow"  # Allow extra fields
 
 settings = Settings() 
+
+print(settings.dict()) 
