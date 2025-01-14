@@ -1,6 +1,6 @@
 ### Week6
 
-* Web App where you can enter customers parameters and get credit scoring 
+* Web App where you can enter customers parameters and get credit scoring result 
 
 1. **Tree-based Models**
    - Implementation of XGBoost
