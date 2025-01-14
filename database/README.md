@@ -1,11 +1,11 @@
-## Week6
+## Credit_Score_Classifier
 
 * Web App where you can enter customers parameters and get credit scoring result 
 
-1. **Tree-based Models**
+1. **Machine Learning**
    - Implementation of XGBoost
    - Model training and evaluation
-    - Classification of high and low risk customers 
+   - Classification of high and low risk customers 
 
 2. **FastAPI Backend**
    - RESTful API development with FastAPI
