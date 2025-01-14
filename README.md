@@ -1,4 +1,4 @@
-### Week6
+## Week6
 
 * Web App where you can enter customers parameters and get credit scoring result 
 
