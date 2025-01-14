@@ -34,7 +34,6 @@ The project demonstrates a production-ready ML system with automated testing, co
 
 ## Project Setup and Running Instructions
 
-### Prerequisites
 
 1. **Python**: Ensure you have Python 3.x installed. You can download it from [python.org](https://www.python.org/downloads/).
 
