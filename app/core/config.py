@@ -27,5 +27,3 @@ class Settings(BaseSettings):
         extra = "allow"  # Allow extra fields
 
 settings = Settings() 
-
-print(settings.dict()) 
