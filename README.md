@@ -1,4 +1,10 @@
-## Credit_Score_Classifier
+## Credit Score Classifier
+
+
+
+![credit-score-architecture drawio (8)](https://github.com/user-attachments/assets/c4bbc17b-eb72-4e53-b081-e62b21897c7c)
+
+
 
 * Web App where you can enter customers parameters and get credit scoring result 
 
