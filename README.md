@@ -2,7 +2,8 @@
 
 
 
-![credit-score-architecture drawio (8)](https://github.com/user-attachments/assets/c4bbc17b-eb72-4e53-b081-e62b21897c7c)
+![credit-score-architecture (3)](https://github.com/user-attachments/assets/efc013f6-9bcd-48a0-800b-477789d31676)
+
 
 
 
